@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "iOS_SDK"
-  s.version      = "0.0.1"
-  s.summary      = ""
+  s.version      = "1.0.0"
+  s.summary      = "Test IOS SDK"
 
   s.description  = <<-DESC
                    A longer description of iOS_SDK in Markdown format.
@@ -40,7 +40,7 @@ Pod::Spec.new do |s|
   #
 
   s.license      = "MIT (example)"
-  # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -65,7 +65,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  # s.platform     = :ios, "5.0"
+   s.platform     = :ios, "8.1"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/OptimalPayments/iOS_SDK.git", :commit => "8f086dc338b5f10ecb9eacac6b20b9172a8c6d22" }
+  s.source       = { :git => "https://github.com/OptimalPayments/iOS_SDK.git", :commit => "e9e5efb69fef4b2c5d7d91edb626feb3ee61f494", :tag =>"1.0.0" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -89,8 +89,8 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "Classes/**/*.{h,m}"
-  s.exclude_files = "Classes/Exclude"
+  s.source_files  = "OptimalApplePay/PaymentKit/*.{h,m}", "OptimalApplePay/MockPassKItLib/*.{h,m}"
+  #s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
 
@@ -103,7 +103,7 @@ Pod::Spec.new do |s|
   #  non-essential files like tests, examples and documentation.
   #
 
-  # s.resource  = "icon.png"
+   s.resource  = "OptimalApplePay/MockPassKItLib/OPAYMockPaymentSummaryViewController.xib"
   # s.resources = "Resources/*.png"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"

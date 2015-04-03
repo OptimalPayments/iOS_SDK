@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Examples/TestWSMerchantApplication-Swift/TestWSMerchantApplication-Swift.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Examples/TestQAMerchantApplication/TestQAMerchantApplication.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:OptimalApplePay.xcodeproj">
+   </FileRef>
+</Workspace>

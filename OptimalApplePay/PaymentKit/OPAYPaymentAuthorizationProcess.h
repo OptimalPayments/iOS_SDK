@@ -57,7 +57,8 @@
  EnvType=Value
  TimeIntrval=value
  
- 2)caerData dictionary contains cart details.
+ 
+ 2)cartData dictionary contains cart details.
  CartID=value
  CartTitle=value
  CartCost=value

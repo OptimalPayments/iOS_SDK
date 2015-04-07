@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/OptimalPayments/iOS_SDK.git", :commit => "e9e5efb69fef4b2c5d7d91edb626feb3ee61f494", :tag =>"1.0.0" }
+  s.source       = { :git => "https://github.com/OptimalPayments/iOS_SDK.git", :commit => "c5ab8fb0f9d5dc3e79c1f0d3c2de8acb703001a2", :tag =>"1.0.0" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

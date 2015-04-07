@@ -36,7 +36,7 @@
  
  2)Will get "Null" value while network problem.
  
- 3) Optilam return the error response in below format,
+ 3) Optimal return the error response in below format,
  
  error =   
     {

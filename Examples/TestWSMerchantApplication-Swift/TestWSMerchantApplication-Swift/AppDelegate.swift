@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func loadDataFrmPlist(){
         var documentList = NSBundle.mainBundle().pathForResource("MerchantRealConfiguration", ofType:"plist")
         plistDataDictionary = NSDictionary(contentsOfFile: documentList!)
-        println(" \(__FUNCTION__)Fetching 'MerchantRealConfiguration.plist 'file \n \(plistDataDictionary) \n")
+     //   println(" \(__FUNCTION__)Fetching 'MerchantRealConfiguration.plist 'file \n \(plistDataDictionary) \n")
     }
 
     func applicationWillResignActive(application: UIApplication) {

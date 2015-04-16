@@ -42,12 +42,11 @@
     
     
     if(!jsonSerializationError) {
-        NSString *serJSON = [[NSString alloc] initWithData:_jsonData encoding:NSUTF8StringEncoding];
-        NSLog(@"Serialized JSON Token Data: %@", serJSON);
+        //NSString *serJSON = [[NSString alloc] initWithData:_jsonData encoding:NSUTF8StringEncoding];
         
         [self requestServiceRequestData:_jsonData];
     } else {
-        NSLog(@"JSON Encoding Failed: %@", [jsonSerializationError localizedDescription]);
+    
     }
     
 }
@@ -65,8 +64,9 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"MerchantRealConfiguration" ofType:@"plist"];
     NSMutableDictionary *myDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
     
-    NSString *urlString = [NSString stringWithFormat:@"https://api.sbox.netbanx.com/merchantcardtestapp/v1/accounts/%@/authorizations",[myDictionary objectForKey:@"merchantAccount"]];
+    NSString *urlString = [NSString stringWithFormat:@"https://api.test.netbanx.com/merchantcardtestapp/v1/accounts/%@/authorizations",[myDictionary objectForKey:@"merchantAccount"]];
     
+        
     projectsUrl = [NSURL  URLWithString:urlString];
     
     NSString *userIDPassword= [NSString stringWithFormat:@"%@:%@", [myDictionary objectForKey:@"OptiMerchantID"], [myDictionary objectForKey:@"OptiMerchantPassword"]];
@@ -74,7 +74,6 @@
     NSString *base64String = [plainData base64EncodedStringWithOptions:0];
     
     NSString *authorizationField= [NSString stringWithFormat: @"Basic %@", base64String];
-    //   NSLog(@"base64String::%@",base64String);
     
     
     NSMutableURLRequest *dataSubmit = [NSMutableURLRequest requestWithURL:projectsUrl cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
@@ -91,7 +90,7 @@
 #pragma mark NSURLConnection delegate
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    NSLog(@"didReceiveResponse");
+    
     [self.responseData setLength:0];
 }
 
@@ -100,18 +99,15 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"didFailWithError");
     
     NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&error];
     NSLog(@"Response Error::%@",res);
-    
     [self removeAlertView:_alertCntrl];
     [self callWaitingAlertViewTitle:@"Alert" withMessage:@"Network connection error, please try again." withOkBtn:YES];
     
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"connectionDidFinishLoading");
     
     // convert to JSON
     NSError *myError = nil;

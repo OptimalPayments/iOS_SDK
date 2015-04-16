@@ -7,10 +7,16 @@
 
 #import "OPAYApplePayDef.h"
 
+#define LOG_ON 1
+#define LOG_OFF 2
+
+#undef IS_LOG_ENABLE
+#define IS_LOG_ENABLE LOG_OFF
+
 @implementation OPAYApplePayDef
 
-NSString * const url_for_single_user_token_Test = @"https://api.sbox.netbanx.com/customervault/v1/applepaysingleusetokens";
-NSString * const url_for_single_user_token_Prod = @"";
+NSString * const url_for_single_user_token_Test = @"https://api.test.netbanx.com/customervault/v1/applepaysingleusetokens";  //Test env url
+NSString * const url_for_single_user_token_Prod = @"https://api.netbanx.com/customervault/v1/applepaysingleusetokens";       //Prod env url
 
 
 + (NSString*) merchantUserID {
@@ -86,10 +92,10 @@ NSString * const url_for_single_user_token_Prod = @"";
 }
 +(void)OPAYLog:(NSString*)functionName returnMessage:(id)message;
 {
-#if TARGET_IPHONE_SIMULATOR
-   NSLog(@"OPAY Log::Key::%@ ||Value::%@",functionName,message);
+#if (IS_LOG_ENABLE == LOG_ON)
+    
+    NSLog(@"OPAY Log::Key::%@ ||Value::%@",functionName,message);
+    
 #endif
 }
-
-
 @end

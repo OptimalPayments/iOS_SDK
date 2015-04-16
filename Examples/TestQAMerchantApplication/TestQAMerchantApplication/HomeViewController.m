@@ -118,10 +118,8 @@
     
     NSDictionary *envSettingDict = [NSDictionary dictionaryWithObjectsAndKeys:envType,@"EnvType",timeIntrval,@"TimeIntrval",nil];
     
-   // NSMutableDictionary *finalDataDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:shippingMethod, @"ShippingMethod",envSettingDict,@"EnvSettingDict", nil ];
+    NSMutableDictionary *finalDataDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:shippingMethod, @"ShippingMethod",envSettingDict,@"EnvSettingDict", nil ];
     
-    NSMutableDictionary *finalDataDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:envSettingDict,@"EnvSettingDict", nil ];
-
     
     return finalDataDictionary;
 }
@@ -148,23 +146,26 @@
 #pragma mark OPTPaymentAuthorizationViewControllerDelegate
  
 -(void)callBackResponseFromOPTSDK:(NSDictionary*)response{
-    NSLog(@"Calling Home view from Real apple pay/Single user SDK, pass data to the merchant app through \"response\" object.");
     
-    NSLog(@"Main app response: %@",response);
-    
-    tokenResponse = [NSDictionary dictionaryWithDictionary:response];
-    
-    NSString *message = [NSString stringWithFormat:@"Your Payment Token is :: %@", [response objectForKey:@"paymentToken"]];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert show];
-    
-    authButton.hidden = false;
-
-    
+    if(response){
+        tokenResponse = [NSDictionary dictionaryWithDictionary:response];
+        
+        
+        NSString *message = [NSString stringWithFormat:@"Your Payment Token is :: %@", [response objectForKey:@"paymentToken"]];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        
+        authButton.hidden = false;
+    }else{
+        //Error handling
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Error message" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
 
+
 -(void)callBackAuthorizationProcess:(NSDictionary*)dictonary{
-    NSLog(@"%@",dictonary);
     
     NSDictionary *errorDict=[dictonary objectForKey:@"error"];
     
@@ -226,13 +227,12 @@
 
 - (IBAction)switchToggled:(id)sender {
     UISwitch *mySwitch = (UISwitch *)sender;
-    if ([mySwitch isOn]) {
+    if ([mySwitch isOn])
+    {
         isSwitchOn = true;
-        NSLog(@"return true");
-    } else {
+    } else
+    {
         isSwitchOn = false;
-        NSLog(@"return true");
-        NSLog(@"return false");
     }
 }
 

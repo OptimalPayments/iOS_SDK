@@ -7,12 +7,12 @@
 	<key>CurrencyCode</key>
 	<string>USD</string>
 	<key>merchantAccount</key>
-	<string>1001076060</string>
+	<string>Your merchant account number.</string>
 	<key>merchantIdentifier</key>
-	<string>merchant.com.optimalpayments.sbox.example01</string>
+	<string>Your merchant identifier.</string>
 	<key>OptiMerchantID</key>
-	<string>opus-sbox-single-use</string>
+	<string>Single Use API Key ID.</string>
 	<key>OptiMerchantPassword</key>
-	<string>B-qa2-0-54ca7c5e-0-302c021443e7bfc8540afbc041df04fc81676b1f2da6792d02140b040c63a123b2136365df6f4cc560422bb0da32</string>
+	<string>Single Use API Key Password.</string>
 </dict>
 </plist>

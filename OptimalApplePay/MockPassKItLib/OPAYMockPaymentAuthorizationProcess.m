@@ -77,12 +77,9 @@
 - (void)showPaymentSummeryView:(UIViewController *)viewController delgate:(id<PKPaymentAuthorizationViewControllerDelegate>) pDelegate withIdentifier:(NSString*)merchantIdentifier withMerchantID:(NSString*)optiMerchantID withMerchantPwd:(NSString*)optiMerchantPwd withMerchantCountry:(NSString*)merchantCountry withMerchantCurrency:(NSString*)merchantCurrency withRequestData:(NSDictionary*)dataDictionary withCartData:(NSDictionary*)cartData
 {
     
-    [OPAYMockApplePayDef OPAYLog:@"beginPayment" returnMessage:@"IN beginPayment"];
     optViewController=viewController;
     
-    
     shippingMethodData = [dataDictionary objectForKey:@"ShippingMethod"];
-    
     
     merchantCartDictonary =  cartData;
     // End of Placing data
@@ -222,12 +219,6 @@
         [dataSubmit setHTTPBody: cardData];
         connection = [[NSURLConnection alloc]initWithRequest:dataSubmit delegate:self];
         
-        [OPAYMockApplePayDef OPAYLog:@"Optimal Fake Token URL::" returnMessage:projectsUrl];
-        [OPAYMockApplePayDef OPAYLog:@"Request Headers::" returnMessage:[dataSubmit allHTTPHeaderFields]];
-        NSString *serJSON = [[NSString alloc] initWithData:cardData encoding:NSUTF8StringEncoding];
-        [OPAYMockApplePayDef OPAYLog:@"Request Data::" returnMessage:serJSON];
-        
-        
     }
     else if ([requestServiceName isEqualToString:FAKE_SINGLE_USE_TOKEN])
     {
@@ -242,10 +233,6 @@
         [dataSubmit setHTTPBody: fakeTokenData];
         connection = [[NSURLConnection alloc]initWithRequest:dataSubmit delegate:self];
         
-        [OPAYMockApplePayDef OPAYLog:@"Optimal Single Use Token URL::" returnMessage:projectsUrl];
-        [OPAYMockApplePayDef OPAYLog:@"Request Headers::" returnMessage:[dataSubmit allHTTPHeaderFields]];
-        NSString *serJSON = [[NSString alloc] initWithData:fakeTokenData encoding:NSUTF8StringEncoding];
-        [OPAYMockApplePayDef OPAYLog:@"Request Data::" returnMessage:serJSON];
     }
     self.responseData=[NSMutableData data];
     
@@ -266,7 +253,7 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     
     NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&error];
-    [OPAYMockApplePayDef OPAYLog:@"Response Error::" returnMessage:res];
+    
     [self hideActivityViewer];
     [self.authTestDelegate callBackResponseFromOPAYMockSDK:res];
     
@@ -278,8 +265,6 @@
     
     NSError *myError = nil;
     NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
-    [OPAYMockApplePayDef OPAYLog:@"Response Data::" returnMessage:res];
-    
     
     if ([requestServiceName isEqualToString:FAKE_APPLE_TOKE_SERVICE])
     {

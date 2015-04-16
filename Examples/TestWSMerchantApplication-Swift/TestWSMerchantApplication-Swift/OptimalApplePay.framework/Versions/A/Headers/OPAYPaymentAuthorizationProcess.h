@@ -20,20 +20,37 @@
  */
 - (void)callBackResponseFromOPTSDK:(NSDictionary*)response;
 /*
- This method will return two types of response
+ This method will return response as below.
  1) Payment token from apple pay.
  {
  "version":"Value",
  "data":"Value",
  "signature":"Value",
- "header":{
+ "header":
+    {
     "ephemeralPublicKey":"Value",
     "transactionId":"Value",
     "publicKeyHash":"Value"
-            }
+    }
  }
  
  2)Will get "Null" value while network problem.
+ 
+ 3) Optimal return the error response in below format,
+ 
+ error =   
+    {
+    code = "Error code";
+    links =
+        (
+        {
+            href = "Reference link for the specied error.";
+            rel = errorinfo;
+        }
+        );
+    message = "Value";
+        };
+    }
  
  */
 @end;
@@ -57,7 +74,8 @@
  EnvType=Value
  TimeIntrval=value
  
- 2)caerData dictionary contains cart details.
+ 
+ 2)cartData dictionary contains cart details.
  CartID=value
  CartTitle=value
  CartCost=value

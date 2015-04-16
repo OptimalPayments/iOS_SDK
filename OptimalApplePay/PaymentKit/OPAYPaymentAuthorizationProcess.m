@@ -120,7 +120,6 @@
 
 -(void)beginPayment:(UIViewController *)viewController withRequestData:(NSDictionary*)dataDictionary withCartData:(NSDictionary*)cartData
 {
-    [OPAYApplePayDef OPAYLog:@"beginPayment" returnMessage:@"IN beginPayment"];
     optViewController=viewController.view;
 
     
@@ -257,10 +256,6 @@
     //Token info shoud be set here
     NSData *tokenData =payment.token.paymentData;
     
-    //For testing purpose print the real token
-    NSString *cardToken = [[NSString alloc] initWithData:payment.token.paymentData encoding:NSUTF8StringEncoding ];
-    [OPAYApplePayDef OPAYLog:@"Real Apple Pay Token Response ::\n" returnMessage:cardToken];
-    
     self.paymentTokenData = [applePaySingleUseTokens prepareRequestRealToken:tokenData];
     
     completion(PKPaymentAuthorizationStatusSuccess );
@@ -306,14 +301,7 @@
         [dataSubmit setHTTPBody:self.paymentTokenData];
         connection = [[NSURLConnection alloc]initWithRequest:dataSubmit delegate:self];
         
-        [OPAYApplePayDef OPAYLog:@"Optimal Customer Vault Single User Token URL::" returnMessage:projectsUrl];
-        [OPAYApplePayDef OPAYLog:@"Request Headers::" returnMessage:[dataSubmit allHTTPHeaderFields]];
-        NSString *serJSON = [[NSString alloc] initWithData:self.paymentTokenData encoding:NSUTF8StringEncoding];
-        [OPAYApplePayDef OPAYLog:@"Request Data::" returnMessage:serJSON];
-        
-        
         self.responseData=[NSMutableData data];
-        
         
     }
     
@@ -335,8 +323,6 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     
     NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&error];
-    [OPAYApplePayDef OPAYLog:@"Response Error::" returnMessage:res];
-    
     
     [self hideActivityViewer];
     
@@ -350,7 +336,6 @@
     // convert to JSON
     NSError *myError = nil;
     NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
-    [OPAYApplePayDef OPAYLog:@"Response Data::" returnMessage:res];
     
     [self hideActivityViewer];
     [self.authDelegate callBackResponseFromOPTSDK:res];

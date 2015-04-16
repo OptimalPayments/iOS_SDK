@@ -89,39 +89,42 @@ class TVViewController: UIViewController , OPAYPaymentAuthorizationProcessDelega
     
     
     func callBackResponseFromOPTSDK(response: [NSObject : AnyObject]!) {
-        println("callBackResponseFromOPTSDK")
         
-        
-        
-        if let nameObject: AnyObject = response["error"] {
-            var errorCode: String = String()
-            var errorMsg: String = String()
-            if var errCode: AnyObject = nameObject["code"]{
-                if let nameString = errCode as? String {
-                    errorCode = nameString
+        if (response != nil){
+            if let nameObject: AnyObject = response["error"] {
+                var errorCode: String = String()
+                var errorMsg: String = String()
+                if var errCode: AnyObject = nameObject["code"]{
+                    if let nameString = errCode as? String {
+                        errorCode = nameString
+                    }
                 }
-            }
-            
-            if var errCode: AnyObject = nameObject["message"]{
-                if let nameString = errCode as? String {
-                    errorMsg = nameString
+                
+                
+                if var errCode: AnyObject = nameObject["message"]{
+                    if let nameString = errCode as? String {
+                        errorMsg = nameString
+                    }
                 }
+                
+                
+                self .showAlertView(errorCode, errorMessage: errorMsg)
+                
+                
             }
-            
-            self .showAlertView(errorCode, errorMessage: errorMsg)
-            
+            else{
+                authorizationData = response
+                
+                
+                authrizationBtn?.hidden = false
+                
+                
+                var tokenData: AnyObject = response["paymentToken"]!
+                self .showAlertView("Success", errorMessage: "Your payment token is ::\(tokenData)")
+            }
+        }else{
+            self .showAlertView("Alert", errorMessage: "Error message")
         }
-        else{
-            authorizationData = response
-            
-            authrizationBtn?.hidden = false
-            
-            var tokenData: AnyObject = response["paymentToken"]!
-            self .showAlertView("Success", errorMessage: "Your payment token is ::\(tokenData)")
-            
-            
-        }
-        
     }
     
     func callBackResponseFromOptimalRequest(response: [NSObject : AnyObject]!) {
@@ -136,40 +139,45 @@ class TVViewController: UIViewController , OPAYPaymentAuthorizationProcessDelega
         var errorCode: String = String()
         var errorMsg: String = String()
         
-        if let nameObject: AnyObject = dictonary["error"] {
-            if var errCode: AnyObject = nameObject["code"]{
-                if let nameString = errCode as? String {
-                    errorCode = nameString
+        if(dictonary != nil)
+        {
+            if let nameObject: AnyObject = dictonary["error"] {
+                if var errCode: AnyObject = nameObject["code"]{
+                    if let nameString = errCode as? String {
+                        errorCode = nameString
+                    }
                 }
-            }
-            
-            if var errCode: AnyObject = nameObject["message"]{
-                if let nameString = errCode as? String {
-                    errorMsg = nameString
+                
+                if var errCode: AnyObject = nameObject["message"]{
+                    if let nameString = errCode as? String {
+                        errorMsg = nameString
+                    }
                 }
-            }
-            
-        }else if let nameObject: AnyObject = dictonary["status"]{
-            if var nameString = nameObject as? String {
-                if nameString == "COMPLETED"{
-                    errorCode = nameString
-                }
-                if let nameObject: AnyObject = dictonary["settleWithAuth"]{
-                    if var nameString = nameObject as? Int {
-                        if nameString == 0{
-                            errorMsg = "Authorization completed, please proceed for settlement."
-                        }else{
-                            errorMsg = "Settlement got completed, please check your order history."
+                
+            }else if let nameObject: AnyObject = dictonary["status"]{
+                if var nameString = nameObject as? String {
+                    if nameString == "COMPLETED"{
+                        errorCode = nameString
+                    }
+                    if let nameObject: AnyObject = dictonary["settleWithAuth"]{
+                        if var nameString = nameObject as? Int {
+                            if nameString == 0{
+                                errorMsg = "Authorization completed, please proceed for settlement."
+                            }else{
+                                errorMsg = "Settlement got completed, please check your order history."
+                            }
                         }
                     }
                 }
             }
+            else{
+                println(dictonary)
+            }
+            
+            
+            self .showAlertView(errorCode, errorMessage: errorMsg)
+       
         }
-        else{
-            println(dictonary)
-        }
-        
-        self .showAlertView(errorCode, errorMessage: errorMsg)
     }
     
     

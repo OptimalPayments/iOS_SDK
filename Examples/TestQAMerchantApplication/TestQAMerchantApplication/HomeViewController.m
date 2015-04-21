@@ -146,25 +146,39 @@
 #pragma mark OPTPaymentAuthorizationViewControllerDelegate
  
 -(void)callBackResponseFromOPTSDK:(NSDictionary*)response{
-    
+
     if(response){
-        tokenResponse = [NSDictionary dictionaryWithDictionary:response];
+        NSDictionary *errorDict=[response objectForKey:@"error"];
         
+        NSString *code;
+        NSString *message;
         
-        NSString *message = [NSString stringWithFormat:@"Your Payment Token is :: %@", [response objectForKey:@"paymentToken"]];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-        
-        
-        authButton.hidden = false;
+        if(errorDict){
+            code=[errorDict objectForKey:@"code"];
+            message=[errorDict objectForKey:@"message"];
+            
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:code message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+        else{
+            tokenResponse = [NSDictionary dictionaryWithDictionary:response];
+            
+            
+            NSString *message = [NSString stringWithFormat:@"Your Payment Token is :: %@", [response objectForKey:@"paymentToken"]];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            
+            authButton.hidden = false;
+            
+            
+        }
     }else{
         //Error handling
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Error message" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     }
 }
-
-
 -(void)callBackAuthorizationProcess:(NSDictionary*)dictonary{
     
     NSDictionary *errorDict=[dictonary objectForKey:@"error"];

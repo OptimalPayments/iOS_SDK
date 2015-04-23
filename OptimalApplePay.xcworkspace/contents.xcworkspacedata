@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Examples/TestWSMerchantApplication-Swift/TestWSMerchantApplication-Swift.xcodeproj">
+      location = "group:Examples/TestMerchAppExample_Swift/TestMerchAppExample_Swift.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Examples/TestQAMerchantApplication/TestQAMerchantApplication.xcodeproj">
+      location = "group:Examples/TestMerchAppExample_Obj-C/TestMerchAppExample_Obj-C.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:OptimalApplePay.xcodeproj">

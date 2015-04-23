@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "OptimalPayments"
-  s.version      = "1.0.4
+  s.version      = "1.0.4"
   s.summary      = "A OptimalPayments apple pay SDK."
 
   s.description  = <<-DESC

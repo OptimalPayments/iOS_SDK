@@ -7,12 +7,12 @@
 	<key>CurrencyCode</key>
 	<string>USD</string>
 	<key>merchantAccount</key>
-	<string>89983449</string>
+	<string>Your merchant account number.</string>
 	<key>merchantIdentifier</key>
-	<string>merchant.com.optimalpayments.test.example02</string>
+	<string>Your merchant identifier.</string>
 	<key>OptiMerchantID</key>
-	<string>OT-16156</string>
+	<string>Single Use API Key ID.</string>
 	<key>OptiMerchantPassword</key>
-	<string>B-qa2-0-552b9bcf-0-302c02144ed8f9b8aea9d65b44b77a16a81ec5f9ab916f8c02142b4e69b3a272b866b1e263b0b0c7a925a8945418</string>
+	<string>Single Use API Key Password.</string>
 </dict>
 </plist>

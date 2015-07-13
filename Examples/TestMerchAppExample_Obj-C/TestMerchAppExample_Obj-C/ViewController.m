@@ -31,13 +31,17 @@
 /* ------------------- Main screen data ------------------------- */
 
 -(IBAction)homeBtnSelected:(id)sender{
-    _homeController = [[HomeViewController alloc] initWithNibName:nil bundle:nil];
-    
-    
+   
+  /*  _homeController = [[HomeViewController alloc] initWithNibName:nil bundle:nil];
     UIStoryboard *storyboard = self.storyboard;
     _homeController = [storyboard instantiateViewControllerWithIdentifier:@"HomeviewController"];
     [self presentViewController:_homeController animated:YES completion:nil];
+    */
     
+    _menuScreen =[[MenuScreen alloc] initWithNibName:nil bundle:nil];
+    UIStoryboard *storyboard = self.storyboard;
+    _menuScreen = [storyboard instantiateViewControllerWithIdentifier:@"MenuScreen"];
+    [self presentViewController:_menuScreen animated:YES completion:nil];
 }
 
 

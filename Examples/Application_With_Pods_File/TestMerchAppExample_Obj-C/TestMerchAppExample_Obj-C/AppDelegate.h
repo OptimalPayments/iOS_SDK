@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "ViewController.h"
+#import "MenuScreen.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) ViewController *rootViewController;
+@property (strong, nonatomic) MenuScreen *rootViewController;
 @property (strong, nonatomic) UINavigationController *navController;
 
 

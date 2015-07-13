@@ -53,6 +53,8 @@
     }
  
  */
+-(void)callNonAppleFlowFromOPTSDK;
+// This method will call thenon apple flow from merchant app.
 @end;
 
 @interface OPAYPaymentAuthorizationProcess : NSObject <NSURLConnectionDelegate,PKPaymentAuthorizationViewControllerDelegate>
@@ -85,7 +87,7 @@
  
  */
 
-
+-(void)beginNonApplePayment:(UIViewController *)viewController withRequestData:(NSDictionary*)requestNAPData withEnvSettingDict:(NSDictionary*)envSettingData;
 
 
 // Determines whether this app can supports apple pay or not.

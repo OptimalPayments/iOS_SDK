@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		533C519B1B30267A00F91BCD /* AppConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 533C519A1B30267A00F91BCD /* AppConstants.m */; };
 		5342431A1AE8AB09003DCD29 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 534243191AE8AB09003DCD29 /* main.m */; };
 		5342431D1AE8AB09003DCD29 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5342431C1AE8AB09003DCD29 /* AppDelegate.m */; };
 		534243201AE8AB09003DCD29 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5342431F1AE8AB09003DCD29 /* ViewController.m */; };
@@ -38,6 +39,10 @@
 		5342437D1AE8B06A003DCD29 /* MerchantRealConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5342437A1AE8B06A003DCD29 /* MerchantRealConfiguration.plist */; };
 		5342437E1AE8B06A003DCD29 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5342437C1AE8B06A003DCD29 /* HomeViewController.m */; };
 		534243871AE8B180003DCD29 /* OPTAuthorizationProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 534243851AE8B180003DCD29 /* OPTAuthorizationProcess.m */; };
+		53BD56641B1EF91B004E6D88 /* MenuScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BD56631B1EF91B004E6D88 /* MenuScreen.m */; };
+		AD53920C1B538D79000E7EDB /* OptimalApplePay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD53920B1B538D79000E7EDB /* OptimalApplePay.framework */; };
+		AD53920E1B538D7F000E7EDB /* OPAYMockPaymentSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD53920D1B538D7F000E7EDB /* OPAYMockPaymentSummaryViewController.xib */; };
+		B6D7D4F21B0DB306009C1342 /* CreditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7D4F11B0DB306009C1342 /* CreditCardViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		533C51991B30267A00F91BCD /* AppConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
+		533C519A1B30267A00F91BCD /* AppConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConstants.m; sourceTree = "<group>"; };
 		534243141AE8AB09003DCD29 /* TestMerchAppExample_Obj-C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TestMerchAppExample_Obj-C.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		534243181AE8AB09003DCD29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		534243191AE8AB09003DCD29 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -91,6 +98,12 @@
 		534243851AE8B180003DCD29 /* OPTAuthorizationProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPTAuthorizationProcess.m; sourceTree = "<group>"; };
 		534243861AE8B180003DCD29 /* OPTAuthorizationProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPTAuthorizationProcess.h; sourceTree = "<group>"; };
 		534243881AE8B2E6003DCD29 /* TestMerchAppExample_Obj-C.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "TestMerchAppExample_Obj-C.entitlements"; sourceTree = "<group>"; };
+		53BD56621B1EF91B004E6D88 /* MenuScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScreen.h; sourceTree = "<group>"; };
+		53BD56631B1EF91B004E6D88 /* MenuScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuScreen.m; sourceTree = "<group>"; };
+		AD53920B1B538D79000E7EDB /* OptimalApplePay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OptimalApplePay.framework; sourceTree = "<group>"; };
+		AD53920D1B538D7F000E7EDB /* OPAYMockPaymentSummaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OPAYMockPaymentSummaryViewController.xib; path = OptimalApplePay.framework/Headers/OPAYMockPaymentSummaryViewController.xib; sourceTree = "<group>"; };
+		B6D7D4F01B0DB306009C1342 /* CreditCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditCardViewController.h; sourceTree = "<group>"; };
+		B6D7D4F11B0DB306009C1342 /* CreditCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditCardViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD53920C1B538D79000E7EDB /* OptimalApplePay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,13 +162,19 @@
 				5342431C1AE8AB09003DCD29 /* AppDelegate.m */,
 				5342431E1AE8AB09003DCD29 /* ViewController.h */,
 				5342431F1AE8AB09003DCD29 /* ViewController.m */,
-				534243211AE8AB09003DCD29 /* Main.storyboard */,
 				534243241AE8AB09003DCD29 /* Images.xcassets */,
 				534243261AE8AB09003DCD29 /* LaunchScreen.xib */,
 				5342437B1AE8B06A003DCD29 /* HomeViewController.h */,
 				5342437C1AE8B06A003DCD29 /* HomeViewController.m */,
+				B6D7D4F01B0DB306009C1342 /* CreditCardViewController.h */,
+				B6D7D4F11B0DB306009C1342 /* CreditCardViewController.m */,
 				5342437A1AE8B06A003DCD29 /* MerchantRealConfiguration.plist */,
+				534243211AE8AB09003DCD29 /* Main.storyboard */,
 				534243171AE8AB09003DCD29 /* Supporting Files */,
+				53BD56621B1EF91B004E6D88 /* MenuScreen.h */,
+				53BD56631B1EF91B004E6D88 /* MenuScreen.m */,
+				533C51991B30267A00F91BCD /* AppConstants.h */,
+				533C519A1B30267A00F91BCD /* AppConstants.m */,
 			);
 			path = "TestMerchAppExample_Obj-C";
 			sourceTree = "<group>";
@@ -208,6 +228,8 @@
 		5342437F1AE8B0D1003DCD29 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				AD53920D1B538D7F000E7EDB /* OPAYMockPaymentSummaryViewController.xib */,
+				AD53920B1B538D79000E7EDB /* OptimalApplePay.framework */,
 				534243801AE8B122003DCD29 /* Authorization */,
 			);
 			name = SDK;
@@ -329,6 +351,7 @@
 				534243771AE8AFD1003DCD29 /* shoe.png in Resources */,
 				534243641AE8AFD1003DCD29 /* ApplePayBTN_32pt__black_logo_@2x.png in Resources */,
 				5342436D1AE8AFD1003DCD29 /* ApplePayBTN_32pt__whiteLine_logo_@3x.png in Resources */,
+				AD53920E1B538D7F000E7EDB /* OPAYMockPaymentSummaryViewController.xib in Resources */,
 				534243751AE8AFD1003DCD29 /* payNow_img.png in Resources */,
 				534243691AE8AFD1003DCD29 /* ApplePayBTN_32pt__white_logo_@3x.png in Resources */,
 				534243681AE8AFD1003DCD29 /* ApplePayBTN_32pt__white_logo_@2x.png in Resources */,
@@ -350,8 +373,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				533C519B1B30267A00F91BCD /* AppConstants.m in Sources */,
 				534243201AE8AB09003DCD29 /* ViewController.m in Sources */,
+				B6D7D4F21B0DB306009C1342 /* CreditCardViewController.m in Sources */,
 				534243871AE8B180003DCD29 /* OPTAuthorizationProcess.m in Sources */,
+				53BD56641B1EF91B004E6D88 /* MenuScreen.m in Sources */,
 				5342431D1AE8AB09003DCD29 /* AppDelegate.m in Sources */,
 				5342431A1AE8AB09003DCD29 /* main.m in Sources */,
 				5342437E1AE8B06A003DCD29 /* HomeViewController.m in Sources */,
@@ -476,6 +502,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "TestMerchAppExample_Obj-C/TestMerchAppExample_Obj-C.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Shamez Budhwani (ZD3YXN3UT3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shamez Budhwani (ZD3YXN3UT3)";
@@ -484,9 +511,14 @@
 					"$(PROJECT_DIR)/TestMerchAppExample_Obj-C",
 				);
 				INFOPLIST_FILE = "TestMerchAppExample_Obj-C/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-weak_framework",
+					PassKit,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "de07a753-30d8-4fc6-8a45-23684b1af8c0";
+				PROVISIONING_PROFILE = "872d7966-0404-4d1b-8df5-f04beb07ab6d";
 			};
 			name = Debug;
 		};
@@ -494,6 +526,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "TestMerchAppExample_Obj-C/TestMerchAppExample_Obj-C.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Shamez Budhwani (ZD3YXN3UT3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shamez Budhwani (ZD3YXN3UT3)";
@@ -502,9 +535,14 @@
 					"$(PROJECT_DIR)/TestMerchAppExample_Obj-C",
 				);
 				INFOPLIST_FILE = "TestMerchAppExample_Obj-C/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-weak_framework",
+					PassKit,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "de07a753-30d8-4fc6-8a45-23684b1af8c0";
+				PROVISIONING_PROFILE = "872d7966-0404-4d1b-8df5-f04beb07ab6d";
 			};
 			name = Release;
 		};

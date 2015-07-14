@@ -35,7 +35,7 @@
 
 
 #define SingleUserTokneServiceRequest @"ApplePaySingleUseTokens" // Used for optimal's single use token service name
-
+#define NonApplePaySingleUserTokneServiceRequest @"NonApplePaySingleUseTokens" // Used for optimal's Non apple pay single use token service name
 
 
 

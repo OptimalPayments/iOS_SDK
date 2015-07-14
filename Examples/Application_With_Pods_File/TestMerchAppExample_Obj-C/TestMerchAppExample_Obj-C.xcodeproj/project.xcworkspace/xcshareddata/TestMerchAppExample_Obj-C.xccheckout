@@ -14,11 +14,11 @@
 		<string>https://github.com/OptimalPayments/iOS_SDK</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Examples/Application_With_Pods_File/TestMerchAppExample_Obj-C/TestMerchAppExample_Obj-C.xcodeproj</string>
+	<string>Examples/TestMerchAppExample_Obj-C/TestMerchAppExample_Obj-C.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>0F8AC7AB31A1A8A730A265B61E5CBC87E2200DBC</key>
-		<string>../../../../..</string>
+		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/OptimalPayments/iOS_SDK</string>

@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "HomeViewController.h"
+#import "MenuScreen.h"
 
 @interface ViewController : UIViewController
 
 @property (nonatomic, retain) IBOutlet UIButton *homePayBtn;
 @property (nonatomic, retain) IBOutlet UIButton *phonePayBtn;
 @property (nonatomic, retain) HomeViewController *homeController;
+@property (nonatomic, retain) MenuScreen *menuScreen;
 
 -(IBAction)homeBtnSelected:(id)sender;
 

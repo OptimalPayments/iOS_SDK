@@ -6,6 +6,8 @@
 //
 
 #import "HomeViewController.h"
+#import "MenuScreen.h"
+#import "CreditCardViewController.h"
 
 @interface HomeViewController ()
 
@@ -14,14 +16,18 @@
     BOOL isSwitchOn;
 }
 
+
 @end
 
 @implementation HomeViewController
-@synthesize authButton,merchantRefLbl,merchantRefTxt,switchLbl,amountTxt,amtLbl,settleSwitch;
+@synthesize authButton,merchantRefLbl,merchantRefTxt,switchLbl,amountTxt,amtLbl,settleSwitch,btnBack;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
+    btnBack.layer.cornerRadius = 10;
+    
     [self getDataFromPlist];
     
     if (!([self.OPAYAuthController isApplePaySupport])) {
@@ -33,6 +39,7 @@
     amountTxt.delegate = self;
     
     authButton.hidden = true;
+    
 }
 
 - (void)getDataFromPlist
@@ -61,25 +68,28 @@
 -(IBAction)homePayBtnSelected:(id)sender{
     
     if([amountTxt.text isEqualToString:@""] || [amountTxt.text isEqualToString:nil]){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Amount should not be empty/ zero." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Amount should not be empty/zero." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
         return;
     }
 #if TARGET_IPHONE_SIMULATOR
+    
     self.OPAYAuthController.authDelegate = self;
     [self.OPAYAuthController beginPayment:self withRequestData:[self createDataDictonary] withCartData:[self cartData]];
-   
+    
+    
 #else
     if([self.OPAYAuthController isApplePaySupport]==false)
     {
-        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                        message:@"Device does not support making Apple Pay payments!"
+                                                        message:@"Device does not support Apple Pay!"
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
-        
+
+        [self callNonApplePayFlow];
+
     } else
     {
         
@@ -145,9 +155,11 @@
 /* ----- OPTPaymentAuthorizationViewControllerDelegate ---- */
 #pragma mark OPTPaymentAuthorizationViewControllerDelegate
  
--(void)callBackResponseFromOPTSDK:(NSDictionary*)response{
+-(void)callBackResponseFromOPTSDK:(NSDictionary*)response
+{
 
-    if(response){
+    if(response)
+    {
         NSDictionary *errorDict=[response objectForKey:@"error"];
         
         NSString *code;
@@ -161,7 +173,8 @@
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:code message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
         }
-        else{
+        else
+        {
             tokenResponse = [NSDictionary dictionaryWithDictionary:response];
             
             
@@ -179,6 +192,13 @@
         [alert show];
     }
 }
+-(void)callNonAppleFlowFromOPTSDK
+{
+    [self callNonApplePayFlow];
+
+}
+
+
 -(void)callBackAuthorizationProcess:(NSDictionary*)dictonary{
     
     NSDictionary *errorDict=[dictonary objectForKey:@"error"];
@@ -194,7 +214,9 @@
     }
     else if([([dictonary objectForKey:@"status"]) isEqualToString:@"COMPLETED"])
     {
-        if([dictonary objectForKey:@"settleWithAuth"]== 0)
+        NSNumber* authObject =[dictonary objectForKey:@"settleWithAuth"];
+        
+        if([authObject boolValue]== 0)
         {
             code=@"Success";
             message=@"Authorization completed, please proceed for settlement.";
@@ -263,6 +285,22 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)callNonApplePayFlow
+{
+    
+    CreditCardViewController *creditCardViewController=[[CreditCardViewController alloc]init];
+    creditCardViewController.amount=amountTxt.text;
+    creditCardViewController.OPAYAuthPaymentController=self.OPAYAuthController;
+    UIStoryboard *storyboard = self.storyboard;
+    creditCardViewController = [storyboard instantiateViewControllerWithIdentifier:@"CreditCardViewController"];
+    [self presentViewController:creditCardViewController animated:YES completion:nil];
+}
+
+-(void)getTokenUseingCard:(NSDictionary *)response
+{
+    [self callBackResponseFromOPTSDK:response];
 }
 
 /*

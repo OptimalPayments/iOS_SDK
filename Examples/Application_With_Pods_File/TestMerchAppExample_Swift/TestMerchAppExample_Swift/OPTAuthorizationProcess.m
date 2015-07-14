@@ -7,6 +7,8 @@
 //
 
 #import "OPTAuthorizationProcess.h"
+#import "AppConstants.h"
+
 @interface OPTAuthorizationProcess()
 {
     
@@ -64,7 +66,7 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"MerchantRealConfiguration" ofType:@"plist"];
     NSMutableDictionary *myDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
     
-    NSString *urlString = [NSString stringWithFormat:@"https://api.test.netbanx.com/merchantcardtestapp/v1/accounts/%@/authorizations",[myDictionary objectForKey:@"merchantAccount"]];
+    NSString *urlString = [NSString stringWithFormat:@"%@/merchantcardtestapp/v1/accounts/%@/authorizations",BaseUrl,[myDictionary objectForKey:@"merchantAccount"]];
     
         
     projectsUrl = [NSURL  URLWithString:urlString];

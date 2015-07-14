@@ -15,8 +15,8 @@
 
 @implementation OPAYApplePayDef
 
-NSString * const url_for_single_user_token_Test = @"https://api.test.netbanx.com/customervault/v1/applepaysingleusetokens";  //Test env url
-NSString * const url_for_single_user_token_Prod = @"https://api.netbanx.com/customervault/v1/applepaysingleusetokens";       //Prod env url
+NSString * const url_for_single_user_token_Test = @"https://api.test.netbanx.com";  //Test env url
+NSString * const url_for_single_user_token_Prod = @"https://api.netbanx.com";       //Prod env url 
 
 
 + (NSString*) merchantUserID {

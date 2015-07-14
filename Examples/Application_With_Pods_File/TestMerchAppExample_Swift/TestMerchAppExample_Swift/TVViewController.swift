@@ -10,7 +10,8 @@
 
 import Foundation
 
-class TVViewController: UIViewController , OPAYPaymentAuthorizationProcessDelegate, UITextFieldDelegate, AuthorizationProcessDelegate {
+class TVViewController: UIViewController , UITextFieldDelegate, AuthorizationProcessDelegate,OPAYPaymentAuthorizationProcessDelegate
+{
     
     var OPTApplePaySDKObj : OPAYPaymentAuthorizationProcess? // = OPTPaymentAuthorizationProcess()
     @IBOutlet var payNowButton : UIButton?
@@ -22,14 +23,18 @@ class TVViewController: UIViewController , OPAYPaymentAuthorizationProcessDelega
     @IBOutlet var merchantRefField : UITextField?
     @IBOutlet var amountField : UITextField?
     
+     @IBOutlet var  btnBack:UIButton!
+    
     var authorizationData: NSDictionary = NSDictionary()
     
-    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        btnBack.layer.cornerRadius=10;
         
         if(appDelegate.OPAYApplePaySDKObj?.isApplePaySupport() == false){
             payNowButton?.setImage(UIImage(named: "payNow_img"), forState: .Normal)
@@ -46,9 +51,8 @@ class TVViewController: UIViewController , OPAYPaymentAuthorizationProcessDelega
         
     }
     
-    @IBAction func tvPayNowSelected(sender:UIButton) {
-        println("tvPayNowSelected")
-        
+@IBAction func tvPayNowSelected(sender:UIButton) {
+    
         var amount: String! = amountField?.text
         if (amount == "" || amount == nil )
         {
@@ -58,8 +62,8 @@ class TVViewController: UIViewController , OPAYPaymentAuthorizationProcessDelega
         
 #if (arch(i386) || arch(x86_64)) && os(iOS)
     
-    appDelegate.OPAYApplePaySDKObj?.authDelegate = self
-    appDelegate.OPAYApplePaySDKObj?.beginPayment(self, withRequestData: createDataDictonary(), withCartData: createCartData())
+      appDelegate.OPAYApplePaySDKObj?.authDelegate = self
+      appDelegate.OPAYApplePaySDKObj?.beginPayment(self, withRequestData: createDataDictonary(), withCartData: createCartData())
     
 #else
     
@@ -70,7 +74,8 @@ class TVViewController: UIViewController , OPAYPaymentAuthorizationProcessDelega
     }
     else
     {
-        showAlertView("Alert", errorMessage: "Device does not support making Apple Pay payments!")
+        showAlertView("Alert", errorMessage: "Device does not support Apple Pay!")
+        callNonApplePayFlow()
     }
 
 #endif
@@ -79,7 +84,6 @@ class TVViewController: UIViewController , OPAYPaymentAuthorizationProcessDelega
 }
     
     @IBAction func authorizeBtnSelected(sender:UIButton) {
-        println("bagPayNowSelected")
         
         var authObj:OPTAuthorizationProcess = OPTAuthorizationProcess()
         authObj.processDelegate = self
@@ -201,7 +205,7 @@ class TVViewController: UIViewController , OPAYPaymentAuthorizationProcessDelega
     
     func createCartData() -> Dictionary<String, String>{
         var amount: String! = amountField?.text
-        var cartDictonary: [String: String] = ["CartID":"123423", "CartTitle":"TShirt", "CartCost":amount, "CartDiscount":"3", "CartShippingCost":"2","PayTo":"Sudheer"]
+        var cartDictonary: [String: String] = ["CartID":"123423", "CartTitle":"TShirt", "CartCost":amount, "CartDiscount":"3", "CartShippingCost":"2","PayTo":"Llama Services, Inc."]
         
         return cartDictonary;
     }
@@ -228,7 +232,7 @@ class TVViewController: UIViewController , OPAYPaymentAuthorizationProcessDelega
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true);
         return false
     }
@@ -257,12 +261,12 @@ class TVViewController: UIViewController , OPAYPaymentAuthorizationProcessDelega
         var success: Boolean = 0;
         let addresses = CFHostGetAddressing(host, &success).takeUnretainedValue() as NSArray;
         if (addresses.count > 0){
-            let theAddress = addresses[0] as NSData;
+            let theAddress = addresses[0] as! NSData;
             var hostname = [CChar](count: Int(NI_MAXHOST), repeatedValue: 0)
             if getnameinfo(UnsafePointer(theAddress.bytes), socklen_t(theAddress.length),
                 &hostname, socklen_t(hostname.count), nil, 0, NI_NUMERICHOST) == 0 {
                     if let numAddress = String.fromCString(hostname) {
-                        println(numAddress)
+                        
                         ipAddress = numAddress
                     }
             }
@@ -270,6 +274,18 @@ class TVViewController: UIViewController , OPAYPaymentAuthorizationProcessDelega
         
         
         return ipAddress
+    }
+    
+    func callNonApplePayFlow()
+    {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("SWCreditCardViewController") as! UIViewController
+        self.presentViewController(vc, animated: true, completion: nil)
+     
+    }
+    
+     func callNonAppleFlowFromOPTSDK() {
+        callNonApplePayFlow()
     }
     
     override func didReceiveMemoryWarning() {

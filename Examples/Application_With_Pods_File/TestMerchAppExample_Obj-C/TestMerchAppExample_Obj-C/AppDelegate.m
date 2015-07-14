@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "MenuScreen.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    self.rootViewController = [[ViewController alloc] initWithNibName:nil bundle:nil];
+    self.rootViewController = [[MenuScreen alloc] initWithNibName:nil bundle:nil];
     //    [self.window addSubview:self.rootViewController];
     self.navController = [[UINavigationController alloc]initWithRootViewController:self.rootViewController];
     [self.window addSubview:self.navController.view];

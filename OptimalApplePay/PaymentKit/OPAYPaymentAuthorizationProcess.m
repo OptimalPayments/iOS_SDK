@@ -87,7 +87,7 @@
         isHavingStubs = false;
         isOk = false;
         
-        return false;
+        return isOk;
     }
     
 #else
@@ -186,8 +186,9 @@
                 
             }
             else
-            {
+             {
                 //User cannot authorize payments on these networks!!
+                 [self.authDelegate callNonAppleFlowFromOPTSDK];
                 NSLog(@"%@:%@",MerchantAlertTitle,MerchantAlertNetworksNotAvailableMsg);
             }
             
@@ -195,12 +196,14 @@
         else
         {
             //Device does not support making Apple Pay payments!
+            [self.authDelegate callNonAppleFlowFromOPTSDK];
             NSLog(@"%@:%@",MerchantAlertTitle,MerchantAlertDeviceNotSupportMsg);
         }
     }
     #else
     {
         //Device does not support Apple Pay below 8.1 iOS
+        [self.authDelegate callNonAppleFlowFromOPTSDK];
         NSLog(@"%@:%@",MerchantAlertTitle,MerchantAlertDeviceNotSupportIOSMsg);
     }
     #endif
@@ -273,25 +276,63 @@
     [controller dismissViewControllerAnimated:true completion:nil];
 }
 
+/////////////Non Apple Flow /////////////////
+-(void)beginNonApplePayment:(UIViewController *)viewController withRequestData:(NSDictionary*)requestNAPData withEnvSettingDict:(NSDictionary*)envSettingData
+{
+    optViewController=viewController.view;
+    
+    envSettingDict=envSettingData;
+    
+    //Env setting
+    OPAYApplePayDef.timeInterval=[envSettingDict valueForKey:MerchantTimeInterval];
+    OPAYApplePayDef.envType=[envSettingDict valueForKey:MerchantEnvironmentType];
+ 
+    NSError *jsonSerializationError = nil;
+    self.paymentTokenData = [NSJSONSerialization dataWithJSONObject:requestNAPData options:NSUTF8StringEncoding error:&jsonSerializationError];
+    
+    [self showActivityViewer];
+    [self requestServiceByName:NonApplePaySingleUserTokneServiceRequest];
+    
+}
+
+///////////End ///////////////
+
 ///////////// FOR OPTIMAL VAULT CONNECTION   //////////
 
 - (void)requestServiceByName:(NSString *)serviceName
 {
+    
+    NSString *userIDPassword= [NSString stringWithFormat:@"%@:%@", OPAYApplePayDef.merchantUserID, OPAYApplePayDef.merchantPassword];
+    NSData *plainData = [userIDPassword dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *base64String = [plainData base64EncodedStringWithOptions:0];
+    
+    NSString *authorizationField= [NSString stringWithFormat: @"Basic %@", base64String];
+    
+    double timeIntervel=[OPAYApplePayDef.timeInterval doubleValue];
+    
     if ([serviceName isEqualToString:SingleUserTokneServiceRequest])
     {
         
         // JSON POST TO SERVER
-        NSURL *projectsUrl = [NSURL  URLWithString:[OPAYApplePayDef getOptimalUrl]];
+        NSString *urlString = [NSString stringWithFormat:@"%@/customervault/v1/applepaysingleusetokens",[OPAYApplePayDef getOptimalUrl]];
         
-         
+        NSURL *projectsUrl = [NSURL  URLWithString:urlString];
         
-        NSString *userIDPassword= [NSString stringWithFormat:@"%@:%@", OPAYApplePayDef.merchantUserID, OPAYApplePayDef.merchantPassword];
-        NSData *plainData = [userIDPassword dataUsingEncoding:NSUTF8StringEncoding];
-        NSString *base64String = [plainData base64EncodedStringWithOptions:0];
-        
-        NSString *authorizationField= [NSString stringWithFormat: @"Basic %@", base64String];
-       
-        double timeIntervel=[OPAYApplePayDef.timeInterval doubleValue];
+        NSMutableURLRequest *dataSubmit = [NSMutableURLRequest requestWithURL:projectsUrl cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:timeIntervel];
+        [dataSubmit setHTTPMethod:@"POST"]; // 1
+        [dataSubmit setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [dataSubmit setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[self.paymentTokenData length]] forHTTPHeaderField:@"Content-Length"];
+        [dataSubmit setValue:authorizationField forHTTPHeaderField:@"Authorization"];
+        [dataSubmit setHTTPBody:self.paymentTokenData];
+        connection = [[NSURLConnection alloc]initWithRequest:dataSubmit delegate:self];
+   
+        self.responseData=[NSMutableData data];
+    }
+    else if ([serviceName isEqualToString:NonApplePaySingleUserTokneServiceRequest])
+    {
+        // JSON POST TO SERVER
+        NSString *urlString = [NSString stringWithFormat:@"%@/customervault/v1/singleusetokens",[OPAYApplePayDef getOptimalUrl]];
+        NSURL *projectsUrl = [NSURL  URLWithString:urlString];
         
         NSMutableURLRequest *dataSubmit = [NSMutableURLRequest requestWithURL:projectsUrl cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:timeIntervel];
         [dataSubmit setHTTPMethod:@"POST"]; // 1
@@ -302,7 +343,6 @@
         connection = [[NSURLConnection alloc]initWithRequest:dataSubmit delegate:self];
         
         self.responseData=[NSMutableData data];
-        
     }
     
 }
@@ -323,12 +363,8 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     
     NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&error];
-    
     [self hideActivityViewer];
-    
     [self.authDelegate callBackResponseFromOPTSDK:res];
-    
-    
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {

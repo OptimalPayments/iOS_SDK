@@ -7,6 +7,7 @@
 //
 
 #import "OPTAuthorizationProcess.h"
+#import "AppConstants.h"
 @interface OPTAuthorizationProcess()
 {
     
@@ -64,7 +65,7 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"MerchantRealConfiguration" ofType:@"plist"];
     NSMutableDictionary *myDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
     
-    NSString *urlString = [NSString stringWithFormat:@"https://api.test.netbanx.com/merchantcardtestapp/v1/accounts/%@/authorizations",[myDictionary objectForKey:@"merchantAccount"]];
+    NSString *urlString = [NSString stringWithFormat:@"%@/merchantcardtestapp/v1/accounts/%@/authorizations",BaseUrl,[myDictionary objectForKey:@"merchantAccount"]];
     
         
     projectsUrl = [NSURL  URLWithString:urlString];
@@ -82,6 +83,7 @@
     [dataSubmit setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[requestData length]] forHTTPHeaderField:@"Content-Length"]; // 3
     [dataSubmit setValue:authorizationField forHTTPHeaderField:@"Authorization"];
     [dataSubmit setHTTPBody: requestData];
+    
     connection = [[NSURLConnection alloc]initWithRequest:dataSubmit delegate:self];
     self.responseData=[NSMutableData data];
     
@@ -92,6 +94,8 @@
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     
     [self.responseData setLength:0];
+    NSHTTPURLResponse *httpResponse =(NSHTTPURLResponse *)response;
+    NSLog(@"Response Headers::%@",[httpResponse allHeaderFields]);
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {

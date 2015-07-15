@@ -56,7 +56,7 @@ class SWCreditCardViewController :UIViewController ,UITextFieldDelegate,OPAYPaym
         
     }
     
-    func createDataDictonary() -> Dictionary <String , AnyObject>
+    func createDataDictionary() -> Dictionary <String , AnyObject>
     {
         var cardExpData: [String: String] = ["month":txtExpMonth.text, "year":txtExpYear.text]
         
@@ -84,7 +84,7 @@ class SWCreditCardViewController :UIViewController ,UITextFieldDelegate,OPAYPaym
         
         if (appDelegate.OPAYApplePaySDKObj?.respondsToSelector(Selector("beginNonApplePayment:withRequestData:withEnvSettingDict:")) != nil)
         {
-            appDelegate.OPAYApplePaySDKObj?.beginNonApplePayment(self, withRequestData: createDataDictonary(), withEnvSettingDict: enviDictionary)
+            appDelegate.OPAYApplePaySDKObj?.beginNonApplePayment(self, withRequestData: createDataDictionary(), withEnvSettingDict: enviDictionary)
         }
     }
     

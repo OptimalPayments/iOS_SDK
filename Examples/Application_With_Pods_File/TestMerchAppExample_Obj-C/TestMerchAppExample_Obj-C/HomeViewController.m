@@ -75,7 +75,7 @@
 #if TARGET_IPHONE_SIMULATOR
     
     self.OPAYAuthController.authDelegate = self;
-    [self.OPAYAuthController beginPayment:self withRequestData:[self createDataDictonary] withCartData:[self cartData]];
+    [self.OPAYAuthController beginPayment:self withRequestData:[self createDataDictionary] withCartData:[self cartData]];
     
     
 #else
@@ -94,7 +94,7 @@
     {
         
         self.OPAYAuthController.authDelegate = self;
-       [self.OPAYAuthController beginPayment:self withRequestData:[self createDataDictonary] withCartData:[self cartData]];
+       [self.OPAYAuthController beginPayment:self withRequestData:[self createDataDictionary] withCartData:[self cartData]];
                 
     }
 
@@ -114,7 +114,7 @@
 /* --------------- Creating data dictionaries -------------- */
 
 
--(NSMutableDictionary *)createDataDictonary{
+-(NSMutableDictionary *)createDataDictionary{
     // Merchant shipping methods
     NSString *shippingMethodName = @"Llma California Shipping";
     NSString *shippingMethodAmount = @"1.00";

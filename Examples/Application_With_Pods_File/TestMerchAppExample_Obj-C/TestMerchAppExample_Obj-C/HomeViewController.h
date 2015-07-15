@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "OPTAuthorizationProcess.h"
 
-#import "OPAYPaymentAuthorizationProcess.h"
+#import <OptimalApplePay/OPAYPaymentAuthorizationProcess.h>
 
 #import "CreditCardViewController.h"
 

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HomeViewController.h"
 #import <Foundation/Foundation.h>
-#import "OPAYPaymentAuthorizationProcess.h"
+#import <OptimalApplePay/OPAYPaymentAuthorizationProcess.h>
 
 
 @interface CreditCardViewController : UIViewController <UITextFieldDelegate,OPAYPaymentAuthorizationProcessDelegate>

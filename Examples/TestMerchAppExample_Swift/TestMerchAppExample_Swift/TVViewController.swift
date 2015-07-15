@@ -63,14 +63,14 @@ class TVViewController: UIViewController , UITextFieldDelegate, AuthorizationPro
 #if (arch(i386) || arch(x86_64)) && os(iOS)
     
       appDelegate.OPAYApplePaySDKObj?.authDelegate = self
-      appDelegate.OPAYApplePaySDKObj?.beginPayment(self, withRequestData: createDataDictonary(), withCartData: createCartData())
+      appDelegate.OPAYApplePaySDKObj?.beginPayment(self, withRequestData: createDataDictionary(), withCartData: createCartData())
     
 #else
     
     if(appDelegate.OPAYApplePaySDKObj?.isApplePaySupport() == true)
     {
         appDelegate.OPAYApplePaySDKObj?.authDelegate = self
-        appDelegate.OPAYApplePaySDKObj?.beginPayment(self, withRequestData: createDataDictonary(), withCartData: createCartData())
+        appDelegate.OPAYApplePaySDKObj?.beginPayment(self, withRequestData: createDataDictionary(), withCartData: createCartData())
     }
     else
     {
@@ -185,7 +185,7 @@ class TVViewController: UIViewController , UITextFieldDelegate, AuthorizationPro
     }
     
     
-    func createDataDictonary() -> Dictionary<String, Dictionary <String,String>>{
+    func createDataDictionary() -> Dictionary<String, Dictionary <String,String>>{
         
         // Merchant shipping methods
         var shippingMethod1Dictionary: [String: String] = ["shippingName":"Llama California Shipping", "shippingAmount":"1.00", "shippingDes":"3-5 Business Days"]

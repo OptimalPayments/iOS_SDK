@@ -53,7 +53,7 @@
     return false;
 }
 
--(NSMutableDictionary *)createDataDictonary
+-(NSMutableDictionary *)createDataDictionary
 {
     
     NSMutableDictionary *cardExpData= [[NSMutableDictionary alloc]init];
@@ -94,7 +94,7 @@
     self.OPAYAuthPaymentController.authDelegate = self;
     if([self.OPAYAuthPaymentController respondsToSelector:@selector(beginNonApplePayment:withRequestData:withEnvSettingDict:)])
     {
-        [self.OPAYAuthPaymentController beginNonApplePayment:self withRequestData:[self createDataDictonary] withEnvSettingDict:envSettingDict];
+        [self.OPAYAuthPaymentController beginNonApplePayment:self withRequestData:[self createDataDictionary] withEnvSettingDict:envSettingDict];
     }
     
 }

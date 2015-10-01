@@ -5,7 +5,7 @@
 //
 
 #import "OPAYPayment.h"
-#import "OPAYApplePayDef.h"
+#import "OPAYDef.h"
 
 @interface OPAYPayment ()
 
@@ -28,8 +28,8 @@
     [paymentRequest setMerchantIdentifier:merchantIdentifier];
     [paymentRequest setSupportedNetworks:@[PKPaymentNetworkAmex, PKPaymentNetworkMasterCard, PKPaymentNetworkVisa]];
     [paymentRequest setMerchantCapabilities:PKMerchantCapability3DS];
-    [paymentRequest setCountryCode:OPAYApplePayDef.countryCode];
-    [paymentRequest setCurrencyCode:OPAYApplePayDef.currencyCode];
+    [paymentRequest setCountryCode:OPAYDef.countryCode];
+    [paymentRequest setCurrencyCode:OPAYDef.currencyCode];
     return paymentRequest;
 }
 @end

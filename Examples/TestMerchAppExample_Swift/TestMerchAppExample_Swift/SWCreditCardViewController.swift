@@ -79,12 +79,12 @@ class SWCreditCardViewController :UIViewController ,UITextFieldDelegate,OPAYPaym
         
         var enviDictionary: [String: String] = ["EnvType":envType, "TimeIntrval":timeIntrval]
         
-        appDelegate.OPAYApplePaySDKObj?.authDelegate=self
+        appDelegate.OPAYAuthController?.authDelegate=self
         
         
-        if (appDelegate.OPAYApplePaySDKObj?.respondsToSelector(Selector("beginNonApplePayment:withRequestData:withEnvSettingDict:")) != nil)
+        if (appDelegate.OPAYAuthController?.respondsToSelector(Selector("beginNonApplePayment:withRequestData:withEnvSettingDict:")) != nil)
         {
-            appDelegate.OPAYApplePaySDKObj?.beginNonApplePayment(self, withRequestData: createDataDictionary(), withEnvSettingDict: enviDictionary)
+            appDelegate.OPAYAuthController?.beginNonApplePayment(self, withRequestData: createDataDictionary(), withEnvSettingDict: enviDictionary)
         }
     }
     

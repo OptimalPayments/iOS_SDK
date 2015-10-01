@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    var OPAYApplePaySDKObj: OPAYPaymentAuthorizationProcess?
+    var OPAYAuthController: OPAYPaymentAuthorizationProcess?
     var plistDataDictionary: AnyObject? = nil
     
     
@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.loadDataFrmPlist()
         
-        OPAYApplePaySDKObj = OPAYPaymentAuthorizationProcess(merchantIdentifier: plistDataDictionary!["merchantIdentifier"]!  as? String, withMerchantID: plistDataDictionary!["OptiMerchantID"]!  as? String, withMerchantPwd: plistDataDictionary!["OptiMerchantPassword"]!  as? String, withMerchantCountry: plistDataDictionary!["countryCode"]!  as? String, withMerchantCurrency: plistDataDictionary!["CurrencyCode"]!  as? String)
+        OPAYAuthController = OPAYPaymentAuthorizationProcess(merchantIdentifier: plistDataDictionary!["merchantIdentifier"]!  as? String, withMerchantID: plistDataDictionary!["OptiMerchantID"]!  as? String, withMerchantPwd: plistDataDictionary!["OptiMerchantPassword"]!  as? String, withMerchantCountry: plistDataDictionary!["countryCode"]!  as? String, withMerchantCurrency: plistDataDictionary!["CurrencyCode"]!  as? String)
         
         return true
     }

@@ -8,11 +8,11 @@
 #import <Availability.h>
 #import "OPAYPaymentAuthorizationProcess.h"
 #import "OPAYPayment.h"
-#import "OPAYApplePayDef.h"
+#import "OPAYDef.h"
 #import "OPAYApplePayPaymentTokenInfo.h"
 #import "OPAYRequestApplePaySingleUseTokens.h"
 #import "OPAYMockPaymentAuthorizationProcess.h"
-#import "OPAYApplePayConstants.h"
+#import "OPAYConstants.h"
 
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -58,12 +58,12 @@
 {
     // Set the data for all objects !!!
     
-    OPAYApplePayDef.merchantUserID=optiMerchantID;
-    OPAYApplePayDef.merchantPassword=optiMerchantPwd;
+    OPAYDef.merchantUserID=optiMerchantID;
+    OPAYDef.merchantPassword=optiMerchantPwd;
     
-    OPAYApplePayDef.merchantIdentifier=merchantIdentifier;
-    OPAYApplePayDef.countryCode=merchantCountry;
-    OPAYApplePayDef.currencyCode=merchantCurrency;
+    OPAYDef.merchantIdentifier=merchantIdentifier;
+    OPAYDef.countryCode=merchantCountry;
+    OPAYDef.currencyCode=merchantCurrency;
     
     return self;
 }
@@ -130,7 +130,7 @@
         self.testPaymentAuthorizationProcess=[[OPAYMockPaymentAuthorizationProcess alloc]init];
         self.testPaymentAuthorizationProcess.authTestDelegate =self;
         
-        [self.testPaymentAuthorizationProcess showPaymentSummeryView:viewController delgate:self.testPaymentAuthorizationProcess withIdentifier:OPAYApplePayDef.merchantIdentifier withMerchantID:OPAYApplePayDef.merchantUserID withMerchantPwd:OPAYApplePayDef.merchantPassword withMerchantCountry:OPAYApplePayDef.countryCode withMerchantCurrency:OPAYApplePayDef.currencyCode withRequestData:dataDictionary withCartData:cartData];
+        [self.testPaymentAuthorizationProcess showPaymentSummeryView:viewController delgate:self.testPaymentAuthorizationProcess withIdentifier:OPAYDef.merchantIdentifier withMerchantID:OPAYDef.merchantUserID withMerchantPwd:OPAYDef.merchantPassword withMerchantCountry:OPAYDef.countryCode withMerchantCurrency:OPAYDef.currencyCode withRequestData:dataDictionary withCartData:cartData];
         
     }
     #else
@@ -152,10 +152,10 @@
         // End of Placing data
         
         //Env setting
-        OPAYApplePayDef.timeInterval=[envSettingDict valueForKey:MerchantTimeInterval];
-        OPAYApplePayDef.envType=[envSettingDict valueForKey:MerchantEnvironmentType];
+        OPAYDef.timeInterval=[envSettingDict valueForKey:MerchantTimeInterval];
+        OPAYDef.envType=[envSettingDict valueForKey:MerchantEnvironmentType];
         
-        NSString *merchantId = OPAYApplePayDef.merchantIdentifier ;
+        NSString *merchantId = OPAYDef.merchantIdentifier ;
         
         PKPaymentRequest *paymentRequest = [OPAYPayment paymentRequestWithMerchantIdentifier:merchantId];
         
@@ -284,8 +284,8 @@
     envSettingDict=envSettingData;
     
     //Env setting
-    OPAYApplePayDef.timeInterval=[envSettingDict valueForKey:MerchantTimeInterval];
-    OPAYApplePayDef.envType=[envSettingDict valueForKey:MerchantEnvironmentType];
+    OPAYDef.timeInterval=[envSettingDict valueForKey:MerchantTimeInterval];
+    OPAYDef.envType=[envSettingDict valueForKey:MerchantEnvironmentType];
  
     NSError *jsonSerializationError = nil;
     self.paymentTokenData = [NSJSONSerialization dataWithJSONObject:requestNAPData options:NSUTF8StringEncoding error:&jsonSerializationError];
@@ -302,19 +302,19 @@
 - (void)requestServiceByName:(NSString *)serviceName
 {
     
-    NSString *userIDPassword= [NSString stringWithFormat:@"%@:%@", OPAYApplePayDef.merchantUserID, OPAYApplePayDef.merchantPassword];
+    NSString *userIDPassword= [NSString stringWithFormat:@"%@:%@", OPAYDef.merchantUserID, OPAYDef.merchantPassword];
     NSData *plainData = [userIDPassword dataUsingEncoding:NSUTF8StringEncoding];
     NSString *base64String = [plainData base64EncodedStringWithOptions:0];
     
     NSString *authorizationField= [NSString stringWithFormat: @"Basic %@", base64String];
     
-    double timeIntervel=[OPAYApplePayDef.timeInterval doubleValue];
+    double timeIntervel=[OPAYDef.timeInterval doubleValue];
     
     if ([serviceName isEqualToString:SingleUserTokneServiceRequest])
     {
         
         // JSON POST TO SERVER
-        NSString *urlString = [NSString stringWithFormat:@"%@/customervault/v1/applepaysingleusetokens",[OPAYApplePayDef getOptimalUrl]];
+        NSString *urlString = [NSString stringWithFormat:@"%@/customervault/v1/applepaysingleusetokens",[OPAYDef getOptimalUrl]];
         
         NSURL *projectsUrl = [NSURL  URLWithString:urlString];
         
@@ -331,7 +331,7 @@
     else if ([serviceName isEqualToString:NonApplePaySingleUserTokneServiceRequest])
     {
         // JSON POST TO SERVER
-        NSString *urlString = [NSString stringWithFormat:@"%@/customervault/v1/singleusetokens",[OPAYApplePayDef getOptimalUrl]];
+        NSString *urlString = [NSString stringWithFormat:@"%@/customervault/v1/singleusetokens",[OPAYDef getOptimalUrl]];
         NSURL *projectsUrl = [NSURL  URLWithString:urlString];
         
         NSMutableURLRequest *dataSubmit = [NSMutableURLRequest requestWithURL:projectsUrl cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:timeIntervel];
@@ -351,7 +351,7 @@
     [self.responseData setLength:0];
     
     NSHTTPURLResponse *httpResponse =(NSHTTPURLResponse *)response;
-    [OPAYApplePayDef OPAYLog:@"Response Headers::" returnMessage:[httpResponse allHeaderFields]];
+    [OPAYDef OPAYLog:@"Response Headers::" returnMessage:[httpResponse allHeaderFields]];
     
 }
 

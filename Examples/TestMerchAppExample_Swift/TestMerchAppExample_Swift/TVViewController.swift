@@ -36,7 +36,7 @@ class TVViewController: UIViewController , UITextFieldDelegate, AuthorizationPro
         
         btnBack.layer.cornerRadius=10;
         
-        if(appDelegate.OPAYApplePaySDKObj?.isApplePaySupport() == false){
+        if(appDelegate.OPAYAuthController?.isApplePaySupport() == false){
             payNowButton?.setImage(UIImage(named: "payNow_img"), forState: .Normal)
             isApplePaySupports = false
         }
@@ -62,15 +62,15 @@ class TVViewController: UIViewController , UITextFieldDelegate, AuthorizationPro
         
 #if (arch(i386) || arch(x86_64)) && os(iOS)
     
-      appDelegate.OPAYApplePaySDKObj?.authDelegate = self
-      appDelegate.OPAYApplePaySDKObj?.beginPayment(self, withRequestData: createDataDictionary(), withCartData: createCartData())
+      appDelegate.OPAYAuthController?.authDelegate = self
+      appDelegate.OPAYAuthController?.beginPayment(self, withRequestData: createDataDictionary(), withCartData: createCartData())
     
 #else
     
-    if(appDelegate.OPAYApplePaySDKObj?.isApplePaySupport() == true)
+    if(appDelegate.OPAYAuthController?.isApplePaySupport() == true)
     {
-        appDelegate.OPAYApplePaySDKObj?.authDelegate = self
-        appDelegate.OPAYApplePaySDKObj?.beginPayment(self, withRequestData: createDataDictionary(), withCartData: createCartData())
+        appDelegate.OPAYAuthController?.authDelegate = self
+        appDelegate.OPAYAuthController?.beginPayment(self, withRequestData: createDataDictionary(), withCartData: createCartData())
     }
     else
     {

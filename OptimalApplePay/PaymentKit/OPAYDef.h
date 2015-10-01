@@ -1,5 +1,5 @@
 //
-//  OPAYApplePayDef.h
+//  OPAYDef.h
 //
 //  Copyright (c) 2015 Opus. All rights reserved.
 //
@@ -20,7 +20,7 @@ static NSString *currencyCode;
 static NSString *timeInterval;
 static NSString *envType;
 
-@interface OPAYApplePayDef : NSObject
+@interface OPAYDef : NSObject
 
 @property(assign)NSString *merchantPassword;
 @property (nonatomic, copy) NSString *optimalSIngleTokenURL;

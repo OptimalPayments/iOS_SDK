@@ -1,5 +1,5 @@
 //
-//  OPAYApplePayConstants.h
+//  OPAYConstants.h
 //  OptimalApplePay
 //
 //  Created by PLMAC-A1278-C1MLJUH1DTY3 on 3/19/15.
@@ -39,7 +39,7 @@
 
 
 
-@interface OPAYApplePayConstants : NSObject
+@interface OPAYConstants : NSObject
 {
     
 }

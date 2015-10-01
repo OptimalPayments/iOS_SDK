@@ -22,15 +22,15 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		5304B1DD1ABADCB0000027C6 /* OPAYApplePayConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 5304B1DB1ABADCB0000027C6 /* OPAYApplePayConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5304B1DE1ABADCB0000027C6 /* OPAYApplePayConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5304B1DC1ABADCB0000027C6 /* OPAYApplePayConstants.m */; };
+		5304B1DD1ABADCB0000027C6 /* OPAYConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 5304B1DB1ABADCB0000027C6 /* OPAYConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5304B1DE1ABADCB0000027C6 /* OPAYConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5304B1DC1ABADCB0000027C6 /* OPAYConstants.m */; };
 		B6A7A55D1ABAD16A0016755F /* OPAYMockPaymentSummaryViewController.xib in Headers */ = {isa = PBXBuildFile; fileRef = B6F23E991AB9924E00692020 /* OPAYMockPaymentSummaryViewController.xib */; settings = {ATTRIBUTES = (Public, ); }; };
 		B6D303001A933CD300A175D0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D302FF1A933CD300A175D0 /* UIKit.framework */; };
 		B6D303021A933CDA00A175D0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D303011A933CDA00A175D0 /* Foundation.framework */; };
 		B6D303071A933D3B00A175D0 /* OPAYPaymentAuthorizationProcess.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D303051A933D3B00A175D0 /* OPAYPaymentAuthorizationProcess.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B6D303081A933D3B00A175D0 /* OPAYPaymentAuthorizationProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D303061A933D3B00A175D0 /* OPAYPaymentAuthorizationProcess.m */; };
-		B6D303191A933DD800A175D0 /* OPAYApplePayDef.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D3030D1A933DD800A175D0 /* OPAYApplePayDef.h */; };
-		B6D3031A1A933DD800A175D0 /* OPAYApplePayDef.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D3030E1A933DD800A175D0 /* OPAYApplePayDef.m */; };
+		B6D303191A933DD800A175D0 /* OPAYDef.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D3030D1A933DD800A175D0 /* OPAYDef.h */; };
+		B6D3031A1A933DD800A175D0 /* OPAYDef.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D3030E1A933DD800A175D0 /* OPAYDef.m */; };
 		B6D3031B1A933DD800A175D0 /* OPAYApplePayPaymentTokenInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D3030F1A933DD800A175D0 /* OPAYApplePayPaymentTokenInfo.h */; };
 		B6D3031C1A933DD800A175D0 /* OPAYApplePayPaymentTokenInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D303101A933DD800A175D0 /* OPAYApplePayPaymentTokenInfo.m */; };
 		B6D3031D1A933DD800A175D0 /* OPAYPayment.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D303111A933DD800A175D0 /* OPAYPayment.h */; };
@@ -83,16 +83,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5304B1DB1ABADCB0000027C6 /* OPAYApplePayConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPAYApplePayConstants.h; sourceTree = "<group>"; };
-		5304B1DC1ABADCB0000027C6 /* OPAYApplePayConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPAYApplePayConstants.m; sourceTree = "<group>"; };
+		5304B1DB1ABADCB0000027C6 /* OPAYConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPAYConstants.h; sourceTree = "<group>"; };
+		5304B1DC1ABADCB0000027C6 /* OPAYConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPAYConstants.m; sourceTree = "<group>"; };
 		B6D302E51A933CC400A175D0 /* libOptimalApplePay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOptimalApplePay.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6D302F61A933CC400A175D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6D302FF1A933CD300A175D0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B6D303011A933CDA00A175D0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B6D303051A933D3B00A175D0 /* OPAYPaymentAuthorizationProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPAYPaymentAuthorizationProcess.h; sourceTree = "<group>"; };
 		B6D303061A933D3B00A175D0 /* OPAYPaymentAuthorizationProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPAYPaymentAuthorizationProcess.m; sourceTree = "<group>"; };
-		B6D3030D1A933DD800A175D0 /* OPAYApplePayDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPAYApplePayDef.h; sourceTree = "<group>"; };
-		B6D3030E1A933DD800A175D0 /* OPAYApplePayDef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPAYApplePayDef.m; sourceTree = "<group>"; };
+		B6D3030D1A933DD800A175D0 /* OPAYDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPAYDef.h; sourceTree = "<group>"; };
+		B6D3030E1A933DD800A175D0 /* OPAYDef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPAYDef.m; sourceTree = "<group>"; };
 		B6D3030F1A933DD800A175D0 /* OPAYApplePayPaymentTokenInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPAYApplePayPaymentTokenInfo.h; sourceTree = "<group>"; };
 		B6D303101A933DD800A175D0 /* OPAYApplePayPaymentTokenInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPAYApplePayPaymentTokenInfo.m; sourceTree = "<group>"; };
 		B6D303111A933DD800A175D0 /* OPAYPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPAYPayment.h; sourceTree = "<group>"; };
@@ -183,8 +183,8 @@
 		B6D303041A933D0800A175D0 /* PaymentKit */ = {
 			isa = PBXGroup;
 			children = (
-				B6D3030D1A933DD800A175D0 /* OPAYApplePayDef.h */,
-				B6D3030E1A933DD800A175D0 /* OPAYApplePayDef.m */,
+				B6D3030D1A933DD800A175D0 /* OPAYDef.h */,
+				B6D3030E1A933DD800A175D0 /* OPAYDef.m */,
 				B6D3030F1A933DD800A175D0 /* OPAYApplePayPaymentTokenInfo.h */,
 				B6D303101A933DD800A175D0 /* OPAYApplePayPaymentTokenInfo.m */,
 				B6D303111A933DD800A175D0 /* OPAYPayment.h */,
@@ -193,8 +193,8 @@
 				B6D303161A933DD800A175D0 /* OPAYRequestApplePaySingleUseTokens.m */,
 				B6D303051A933D3B00A175D0 /* OPAYPaymentAuthorizationProcess.h */,
 				B6D303061A933D3B00A175D0 /* OPAYPaymentAuthorizationProcess.m */,
-				5304B1DB1ABADCB0000027C6 /* OPAYApplePayConstants.h */,
-				5304B1DC1ABADCB0000027C6 /* OPAYApplePayConstants.m */,
+				5304B1DB1ABADCB0000027C6 /* OPAYConstants.h */,
+				5304B1DC1ABADCB0000027C6 /* OPAYConstants.m */,
 			);
 			path = PaymentKit;
 			sourceTree = "<group>";
@@ -237,7 +237,7 @@
 			files = (
 				B6D303071A933D3B00A175D0 /* OPAYPaymentAuthorizationProcess.h in Headers */,
 				B6A7A55D1ABAD16A0016755F /* OPAYMockPaymentSummaryViewController.xib in Headers */,
-				5304B1DD1ABADCB0000027C6 /* OPAYApplePayConstants.h in Headers */,
+				5304B1DD1ABADCB0000027C6 /* OPAYConstants.h in Headers */,
 				B6F23EA21AB9924E00692020 /* OPAYMockAddressStore.h in Headers */,
 				B6F23EA81AB9924E00692020 /* OPAYMockDataStore.h in Headers */,
 				B6F23EAD1AB9924E00692020 /* OPAYMockPaymentAuthorizationProcess.h in Headers */,
@@ -246,7 +246,7 @@
 				B6F23EB31AB9924E00692020 /* PKPayment+OPAYMockKeys.h in Headers */,
 				B6F23EA01AB9924E00692020 /* OPAYMockShippingManager.h in Headers */,
 				B6F23EA61AB9924E00692020 /* OPAYMockCardStore.h in Headers */,
-				B6D303191A933DD800A175D0 /* OPAYApplePayDef.h in Headers */,
+				B6D303191A933DD800A175D0 /* OPAYDef.h in Headers */,
 				B6F23EA91AB9924E00692020 /* OPAYMockDataTableViewController.h in Headers */,
 				B6F23EAB1AB9924E00692020 /* OPAYMockPayment.h in Headers */,
 				B6D3031B1A933DD800A175D0 /* OPAYApplePayPaymentTokenInfo.h in Headers */,
@@ -351,9 +351,9 @@
 			files = (
 				B6D3031E1A933DD800A175D0 /* OPAYPayment.m in Sources */,
 				B6D303081A933D3B00A175D0 /* OPAYPaymentAuthorizationProcess.m in Sources */,
-				B6D3031A1A933DD800A175D0 /* OPAYApplePayDef.m in Sources */,
+				B6D3031A1A933DD800A175D0 /* OPAYDef.m in Sources */,
 				B6F23EAA1AB9924E00692020 /* OPAYMockDataTableViewController.m in Sources */,
-				5304B1DE1ABADCB0000027C6 /* OPAYApplePayConstants.m in Sources */,
+				5304B1DE1ABADCB0000027C6 /* OPAYConstants.m in Sources */,
 				B6F23EAC1AB9924E00692020 /* OPAYMockPayment.m in Sources */,
 				B6F23EB41AB9924E00692020 /* PKPayment+OPAYMockKeys.m in Sources */,
 				B6F23EAE1AB9924E00692020 /* OPAYMockPaymentAuthorizationProcess.m in Sources */,

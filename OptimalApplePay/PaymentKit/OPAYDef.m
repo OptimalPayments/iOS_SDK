@@ -1,11 +1,11 @@
 //
-//  OPAYApplePayDef.m
+//  OPAYDef.m
 //  
 //
 //  Copyright (c) 2015 Opus. All rights reserved.
 //
 
-#import "OPAYApplePayDef.h"
+#import "OPAYDef.h"
 
 #define LOG_ON 1
 #define LOG_OFF 2
@@ -13,7 +13,7 @@
 #undef IS_LOG_ENABLE
 #define IS_LOG_ENABLE LOG_OFF
 
-@implementation OPAYApplePayDef
+@implementation OPAYDef
 
 NSString * const url_for_single_user_token_Test = @"https://api.test.netbanx.com";  //Test env url
 NSString * const url_for_single_user_token_Prod = @"https://api.netbanx.com";       //Prod env url 

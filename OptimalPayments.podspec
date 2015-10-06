@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "OptimalPayments"
-  s.version      = "1.0.9"
+  s.version      = "1.0.10"
   s.summary      = "A OptimalPayments apple pay SDK."
 
   s.description  = <<-DESC
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = {:git => "https://github.com/OptimalPayments/iOS_SDK.git", :commit => "217154ea39e09fe8b168950221854a20b730a2f8", :tag =>"TAG_1.0.9"}
+  s.source       = {:git => "https://github.com/OptimalPayments/iOS_SDK.git", :commit => "217154ea39e09fe8b168950221854a20b730a2f8", :tag =>"TAG_1.0.10"}
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

@@ -27,7 +27,7 @@ class SWMenuScreen :UIViewController
     {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("Tvviewcontroller") as! UIViewController
+        let vc = storyboard.instantiateViewControllerWithIdentifier("Tvviewcontroller") 
         self.presentViewController(vc, animated: true, completion: nil)
         
         
@@ -37,7 +37,7 @@ class SWMenuScreen :UIViewController
     {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("SWCreditCardViewController") as! UIViewController
+        let vc = storyboard.instantiateViewControllerWithIdentifier("SWCreditCardViewController") 
         self.presentViewController(vc, animated: true, completion: nil)
         
     }

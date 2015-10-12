@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "OptimalPayments"
-  s.version      = "1.0.10"
+  s.version      = "1.1.0"
   s.summary      = "A OptimalPayments apple pay SDK."
 
   s.description  = <<-DESC
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = {:git => "https://github.com/OptimalPayments/iOS_SDK.git", :commit => "217154ea39e09fe8b168950221854a20b730a2f8", :tag =>"TAG_1.0.10"}
+  s.source       = {:git => "https://github.com/OptimalPayments/iOS_SDK.git", :commit => "07943902bdedeede1db82ed98dd2d88632dcdbd7", :tag =>"TAG_1.1.0"}
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -89,7 +89,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "OptimalApplePay/PaymentKit/*.{h,m}", "OptimalApplePay/MockPassKItLib/*.{h,m}"
+  s.source_files  = "iOS_SDK/PaymentKit/*.{h,m}", "iOS_SDK/MockPassKItLib/*.{h,m}"
   #s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
@@ -103,7 +103,7 @@ Pod::Spec.new do |s|
   #  non-essential files like tests, examples and documentation.
   #
 
-  s.resource  = "OptimalApplePay/MockPassKItLib/OPAYMockPaymentSummaryViewController.xib"
+  s.resource  = "iOS_SDK/MockPassKItLib/OPAYMockPaymentSummaryViewController.xib"
   # s.resources = "Resources/*.png"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"

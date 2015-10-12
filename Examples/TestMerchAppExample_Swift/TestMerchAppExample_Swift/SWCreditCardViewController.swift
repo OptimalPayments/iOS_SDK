@@ -58,26 +58,42 @@ class SWCreditCardViewController :UIViewController ,UITextFieldDelegate,OPAYPaym
     
     func createDataDictionary() -> Dictionary <String , AnyObject>
     {
-        var cardExpData: [String: String] = ["month":txtExpMonth.text, "year":txtExpYear.text]
         
-        var cardBillingAddress: [String: String] = ["street":txtStreet1.text, "street2":txtStreet2.text,"city":txtCity.text,"country":txtCountry.text,"state":txtState.text,"zip":txtZip.text]
-        
-        var cardData:[String:AnyObject]=["cardNum":txtCardNo.text , "holderName":txtNameOnCard.text,"cardExpiry":cardExpData,"billingAddress":cardBillingAddress];
-        
-        var cardDataDetails:[String:AnyObject]=["card":cardData];
+        var cardExpData = Dictionary<String, AnyObject>()
+        cardExpData["month"] = txtExpMonth.text
+        cardExpData["year"] = txtExpYear.text
         
         
-        return cardDataDetails
+        var cardBillingAddress = Dictionary<String, AnyObject>()
+         cardBillingAddress["street"] = txtStreet1.text
+         cardBillingAddress["street2"] = txtStreet2.text
+         cardBillingAddress["city"] = txtCity.text
+         cardBillingAddress["country"] = txtCountry.text
+         cardBillingAddress["state"] = txtState.text
+         cardBillingAddress["zip"] = txtZip.text
+        
+        
+        var cardData = Dictionary<String, AnyObject>()
+        cardData["cardNum"] = txtCardNo.text
+        cardData["holderName"] = txtNameOnCard.text
+        cardData["cardExpiry"]=cardExpData
+        cardData["billingAddress"]=cardBillingAddress
+        
+        
+         var cardDataDetails = Dictionary<String, AnyObject>()
+         cardDataDetails["card"] = cardData
+        
+         return cardDataDetails
     }
     
     @IBAction func confirmBtnSelected(sender:UIButton)
     {
         
-        var envType:String = "TEST_ENV";  //PROD_ENV TEST_ENV
+        let envType:String = "TEST_ENV";  //PROD_ENV TEST_ENV
         
-        var timeIntrval:String = "30.0";  //Time interval for connection to Optimal server
+        let timeIntrval:String = "30.0";  //Time interval for connection to Optimal server
         
-        var enviDictionary: [String: String] = ["EnvType":envType, "TimeIntrval":timeIntrval]
+        let enviDictionary: [String: String] = ["EnvType":envType, "TimeIntrval":timeIntrval]
         
         appDelegate.OPAYAuthController?.authDelegate=self
         
@@ -107,14 +123,14 @@ class SWCreditCardViewController :UIViewController ,UITextFieldDelegate,OPAYPaym
             if let nameObject: AnyObject = response["error"] {
                 var errorCode: String = String()
                 var errorMsg: String = String()
-                if var errCode: AnyObject = nameObject["code"]{
+                if let errCode: AnyObject = nameObject["code"]{
                     if let nameString = errCode as? String {
                         errorCode = nameString
                     }
                 }
                 
                 
-                if var errCode: AnyObject = nameObject["message"]{
+                if let errCode: AnyObject = nameObject["message"]{
                     if let nameString = errCode as? String {
                         errorMsg = nameString
                     }
@@ -127,7 +143,7 @@ class SWCreditCardViewController :UIViewController ,UITextFieldDelegate,OPAYPaym
             }
             else{
                 
-                var tokenData: AnyObject = response["paymentToken"]!
+                let tokenData: AnyObject = response["paymentToken"]!
                 self .showAlertView("Success", errorMessage: "Your payment token is ::\(tokenData)")
             }
         }else{
@@ -140,7 +156,7 @@ class SWCreditCardViewController :UIViewController ,UITextFieldDelegate,OPAYPaym
         
     }
     func showAlertView(errorCode:String, errorMessage:String){
-        var alert = UIAlertView(title: errorCode, message: errorMessage, delegate: self, cancelButtonTitle: "OK")
+        let alert = UIAlertView(title: errorCode, message: errorMessage, delegate: self, cancelButtonTitle: "OK")
         alert .show()
         
     }

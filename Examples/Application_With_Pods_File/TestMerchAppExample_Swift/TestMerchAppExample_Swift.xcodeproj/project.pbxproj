@@ -37,8 +37,8 @@
 		533BAB8A1B31785100BCBDE7 /* SWMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533BAB891B31785100BCBDE7 /* SWMenuScreen.swift */; };
 		534092961B32A308003A0F0D /* AppConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 534092951B32A308003A0F0D /* AppConstants.m */; };
 		535C126D1B256C9C00FD1ADF /* SWCreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535C126C1B256C9C00FD1ADF /* SWCreditCardViewController.swift */; };
-		ADECEB6E1BB97A2C000DA496 /* OptimalApplePay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADECEB6D1BB97A2C000DA496 /* OptimalApplePay.framework */; };
-		ADECEB701BB97A31000DA496 /* OPAYMockPaymentSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADECEB6F1BB97A31000DA496 /* OPAYMockPaymentSummaryViewController.xib */; };
+		AD15C5F51BCB70C1006C76FF /* iOS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD15C5F41BCB70C1006C76FF /* iOS_SDK.framework */; settings = {ASSET_TAGS = (); }; };
+		AD15C5F71BCB70C9006C76FF /* OPAYMockPaymentSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD15C5F61BCB70C9006C76FF /* OPAYMockPaymentSummaryViewController.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,8 +90,8 @@
 		534092941B32A308003A0F0D /* AppConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
 		534092951B32A308003A0F0D /* AppConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConstants.m; sourceTree = "<group>"; };
 		535C126C1B256C9C00FD1ADF /* SWCreditCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SWCreditCardViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		ADECEB6D1BB97A2C000DA496 /* OptimalApplePay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OptimalApplePay.framework; sourceTree = "<group>"; };
-		ADECEB6F1BB97A31000DA496 /* OPAYMockPaymentSummaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OPAYMockPaymentSummaryViewController.xib; path = OptimalApplePay.framework/Headers/OPAYMockPaymentSummaryViewController.xib; sourceTree = "<group>"; };
+		AD15C5F41BCB70C1006C76FF /* iOS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iOS_SDK.framework; sourceTree = "<group>"; };
+		AD15C5F61BCB70C9006C76FF /* OPAYMockPaymentSummaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OPAYMockPaymentSummaryViewController.xib; path = iOS_SDK.framework/Headers/OPAYMockPaymentSummaryViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADECEB6E1BB97A2C000DA496 /* OptimalApplePay.framework in Frameworks */,
+				AD15C5F51BCB70C1006C76FF /* iOS_SDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,8 +213,8 @@
 		531A3B531AE8C02F004FE5FA /* SDK */ = {
 			isa = PBXGroup;
 			children = (
-				ADECEB6F1BB97A31000DA496 /* OPAYMockPaymentSummaryViewController.xib */,
-				ADECEB6D1BB97A2C000DA496 /* OptimalApplePay.framework */,
+				AD15C5F61BCB70C9006C76FF /* OPAYMockPaymentSummaryViewController.xib */,
+				AD15C5F41BCB70C1006C76FF /* iOS_SDK.framework */,
 				531A3B541AE8C047004FE5FA /* Authorization */,
 			);
 			name = SDK;
@@ -275,6 +275,7 @@
 		531A3AFB1AE8BB5E004FE5FA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = opus;
@@ -332,7 +333,7 @@
 				531A3B4A1AE8BDD2004FE5FA /* ApplePayBTN_32pt__whiteLine_logo_@2x.png in Resources */,
 				531A3B451AE8BDD2004FE5FA /* ApplePayBTN_32pt__black_textLogo_@3x.png in Resources */,
 				531A3B321AE8BDC4004FE5FA /* Authorization.png in Resources */,
-				ADECEB701BB97A31000DA496 /* OPAYMockPaymentSummaryViewController.xib in Resources */,
+				AD15C5F71BCB70C9006C76FF /* OPAYMockPaymentSummaryViewController.xib in Resources */,
 				531A3B351AE8BDC4004FE5FA /* Back_img.png in Resources */,
 				531A3B311AE8BDC4004FE5FA /* BuyNow_btn.png in Resources */,
 				531A3B461AE8BDD2004FE5FA /* ApplePayBTN_32pt__white_logo_@2x.png in Resources */,
@@ -440,7 +441,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -476,7 +477,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
